@@ -1,9 +1,3 @@
-Date,Name,Amount,Category
-2025-02-25,fuel,20000,Transportation
-2025-02-25,breakfast,5000,Food
-2025-02-25,lunch,6000,Food
-2025-02-25,lunch,6000,Food
-2025-02-25,lunch,6000,Food
-2025-02-25,lunch,6000,Food
-2025-02-25,bills,3000,Housing
-2025-02-25,groceries,40000,Housing
+Date,Name,Amount,Category,Notes
+2025-02-25,Groceries,40000,Housing,ghar ka saman
+2025-02-25,fuel,20000,Transportation,petrol
