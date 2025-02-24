@@ -1,5 +1,10 @@
-# expense_manager.py
 import pandas as pd
+import os
+
+def reset_expenses():
+    """Reset the expenses file to ensure clean start."""
+    if os.path.exists("expenses.csv"):
+        os.remove("expenses.csv")
 
 def add_expense(name, amount, category, date, notes):
     if name and amount > 0:
@@ -25,7 +30,7 @@ def load_expenses():
     try:
         return pd.read_csv("expenses.csv")
     except FileNotFoundError:
-        return None
+        return pd.DataFrame(columns=["Date", "Name", "Amount", "Category", "Notes"])
 
 def save_expenses(data):
     data.to_csv("expenses.csv", index=False)
