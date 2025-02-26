@@ -1,10 +1,8 @@
 import streamlit as st
 from auth import login_user, logout_user, is_logged_in
-
 from data_handler import save_expense, get_all_expenses
 from visualization import generate_charts
 from ui_components import render_app_details, render_table
-from config import THEME_COLORS
 
 # Streamlit page configuration
 st.set_page_config(page_title="Budget Planner", page_icon=":moneybag:", layout="wide")
