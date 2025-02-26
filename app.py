@@ -25,10 +25,12 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
+# Remove this block:
 def logout_user():
     """Logout the currently logged-in user."""
     if "user" in st.session_state:
         del st.session_state["user"]
+
 
 if is_logged_in():
     user = st.session_state['user']
