@@ -1,6 +1,5 @@
-# config.py
 THEME_COLORS = {
-    "background": "#f8f9fa",
-    "text": "#212529",
-    "button": "#6c757d"
+    "background": "#f4f4f9",
+    "text": "#333333",
+    "button": "#6c63ff",
 }
