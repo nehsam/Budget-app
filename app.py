@@ -7,28 +7,21 @@ from ui_components import render_app_details, render_table
 # Streamlit page configuration
 st.set_page_config(page_title="Budget Planner", page_icon=":moneybag:", layout="wide")
 
-# Applying the theme
-st.markdown(f"""
+# Applying the theme with hardcoded colors
+st.markdown("""
     <style>
-        .main {{
-            background-color: {THEME_COLORS['background']};
-            color: {THEME_COLORS['text']};
-        }}
-        .stButton>button {{
-            background-color: {THEME_COLORS['button']};
+        .main {
+            background-color: #f4f4f9;
+            color: #333333;
+        }
+        .stButton>button {
+            background-color: #6c63ff;
             color: white;
             border-radius: 5px;
             padding: 10px;
-        }}
+        }
     </style>
 """, unsafe_allow_html=True)
-
-# Remove this block:
-def logout_user():
-    """Logout the currently logged-in user."""
-    if "user" in st.session_state:
-        del st.session_state["user"]
-
 
 if is_logged_in():
     user = st.session_state['user']
@@ -63,7 +56,6 @@ if is_logged_in():
     st.subheader("Expense Analysis")
     generate_charts(expenses, income)
 else:
-    
     st.title("Welcome to NEHA's Budget Planner")
     st.write("Manage your expenses and analyze your spending habits effectively.")
     login_user()
