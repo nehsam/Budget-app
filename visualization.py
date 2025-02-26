@@ -1,15 +1,25 @@
 # visualization.py
-import plotly.express as px
+import streamlit as st
+import matplotlib.pyplot as plt
+import pandas as pd
 
-def generate_pie_chart(data):
-    return px.pie(
-        data, names='Category', values='Amount', title="Expenses by Category",
-        color_discrete_sequence=px.colors.qualitative.Pastel
-    )
+def generate_charts(expenses, total_income):
+    if expenses.empty:
+        st.info("No expenses to display yet.")
+        return
 
-def generate_line_chart(data):
-    return px.line(
-        data, x='Date', y='Amount', title="Spending Over Time",
-        line_shape="spline", markers=True,
-        color_discrete_sequence=["#3b78e7"]
-    )
+    # Expense pie chart
+    fig, ax = plt.subplots()
+    grouped_expenses = expenses.groupby("Expense Name")["Expense Amount"].sum()
+    remaining_income = total_income - grouped_expenses.sum()
+    grouped_expenses["Remaining Income"] = remaining_income
+
+    grouped_expenses.plot.pie(ax=ax, autopct='%1.1f%%', startangle=90)
+    ax.set_ylabel("")
+    st.pyplot(fig)
+
+    # Income vs Expenses
+    fig, ax = plt.subplots()
+    total_expenses = expenses["Expense Amount"].sum()
+    ax.bar(["Income", "Expenses"], [total_income, total_expenses], color=["green", "red"])
+    st.pyplot(fig)
